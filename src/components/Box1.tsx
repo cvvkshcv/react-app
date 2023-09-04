@@ -12,7 +12,8 @@ export const Box1 = () => {
         rotate: isAnim ? "360deg" : 0,
       }}
       transition={{
-        type: "inertia",
+        type: "",
+        stiffness: 100,
       }}
       className="box1"
       onClick={() => setAnim(!isAnim)}
