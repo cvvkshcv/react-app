@@ -12,7 +12,7 @@ export const Box1 = () => {
         rotate: isAnim ? "360deg" : 0,
       }}
       transition={{
-        type: "",
+        type: "spring",
         stiffness: 100,
       }}
       className="box1"

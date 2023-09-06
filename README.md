@@ -14,3 +14,12 @@
     - type: 'tween' | linear motion
     - delay: 2 | 2s delay
     - duration: 3 | 3s animation duration
+
+- Hover & Drag drop
+
+  - any event like hover, drag, focus, tap starts with `while*` keyword
+  - Ex: whileFocus, whileDrag, whileTap, whileHover
+  - To make div dragaable just add drag as prop
+    - Also we can add dragConstraints to limit the drag
+
+-
