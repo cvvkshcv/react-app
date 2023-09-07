@@ -1,0 +1,36 @@
+.stepper-header {
+  display: flex;
+}
+.stepper-wrapper {
+  border-radius: 5px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.stepper-content {
+  padding: 10px;
+  overflow: auto;
+  flex: 1;
+}
+.stepper-header > .tab {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  background: #ccc;
+  cursor: pointer;
+}
+.stepper-header > div.active {
+  font-weight: bold;
+  font-style: italic;
+  background: #fff;
+}
+
+.stepper-underline {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: red;
+  width: 33%;
+}

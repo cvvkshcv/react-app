@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .addToCartBtn {
+    @apply bg-green-700 text-white p-2 w-full rounded;
+  }
+  .prodCategory {
+    @apply text-xs bg-slate-100 inline px-3 py-1 text-black rounded-full shadow-sm;
+  }
+  .prodTitle {
+    @apply text-lg font-bold my-2 overflow-hidden overflow-ellipsis whitespace-nowrap;
+  }
+  .textEllipse {
+    @apply overflow-hidden overflow-ellipsis whitespace-nowrap;
+  }
+  .prodPrice {
+    @apply my-3 font-bold text-lg text-slate-700 italic;
+  }
+  .addRemoveItem {
+    @apply bg-blue-500 text-white rounded px-3 py-1;
+  }
+
+  .tableHead {
+    @apply border-b font-medium p-4 pr-8 pb-3 bg-slate-100 text-left;
+  }
+  .tableRow {
+    @apply border-b border-slate-100 p-4 text-slate-500;
+  }
+}
