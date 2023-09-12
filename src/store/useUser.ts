@@ -40,10 +40,10 @@ export const useUser = create<UseUser>((set, get) => ({
     updateUserInfo();
   },
 
-  updateUserInfo: async () => {
+  updateUserInfo: async (id: number = 1) => {
     const { userInfo } = get();
     try {
-      const res = await fetch("https://fakestoreapi.com/users/1", {
+      const res = await fetch("https://fakestoreapi.com/users/" + id, {
         method: "PUT",
         body: JSON.stringify(userInfo),
       });
