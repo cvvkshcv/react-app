@@ -22,14 +22,24 @@ const CheckOut = () => {
     .map(([prodId, { count }]) => {
       const prod = products.find((prod) => prod?.id === Number(prodId));
       if (prod) {
-        const total = count * prod?.price;
-        return { ...prod, count, total };
+        const discountPercent = 10;
+        const discountAmount = prod.price * (discountPercent / 100);
+        const finalPrice = prod.price - discountAmount;
+        const totalCost = count * finalPrice;
+        return {
+          ...prod,
+          count,
+          totalCost,
+          discountPercent,
+          finalPrice,
+          discountAmount,
+        };
       }
     })
     .filter(Boolean);
 
-  const totalCost = cartItems.reduce((acc, curr) => {
-    return acc + (curr?.total || 0);
+  const cartTotal = cartItems.reduce((acc, curr) => {
+    return acc + (curr?.totalCost || 0);
   }, 0);
 
   return (
@@ -40,6 +50,9 @@ const CheckOut = () => {
             <th className="tableHead">Product name</th>
             <th className="tableHead text-center w-48">Count</th>
             <th className="tableHead">Remove</th>
+            <th className="tableHead">Actual price</th>
+            <th className="tableHead">Discount</th>
+            <th className="tableHead">After discount</th>
             <th className="tableHead w-32">Amount</th>
           </tr>
         </thead>
@@ -51,32 +64,42 @@ const CheckOut = () => {
               </td>
             </tr>
           )}
-          {cartItems.map((cart) => {
-            if (!cart) return null;
+          {cartItems.map((product) => {
+            if (!product) return null;
             return (
               <tr>
-                <td className="tableRow text-left">{cart?.title}</td>
+                <td className="tableRow text-left">{product.title}</td>
                 <td className="tableRow">
-                  <CartCount item={cart} />
+                  <CartCount item={product} />
                 </td>
                 <td className="tableRow">
                   <button
                     className="px-3 py-1 bg-red-400 text-white rounded"
-                    onClick={() => deleteFromCart(cart.id)}
+                    onClick={() => deleteFromCart(product.id)}
                   >
                     Delete
                   </button>
                 </td>
                 <td className="tableRow font-bold text-lg">
-                  ${cart?.total.toFixed(2)}
+                  ${product.price.toFixed(2)}
+                </td>
+                <td className="tableRow font-bold text-lg">
+                  {product?.discountPercent}% ($
+                  {product.discountAmount})
+                </td>
+                <td className="tableRow font-bold text-lg">
+                  ${product.finalPrice.toFixed(2)}
+                </td>
+                <td className="tableRow font-bold text-lg">
+                  ${product.totalCost.toFixed(2)}
                 </td>
               </tr>
             );
           })}
           {cartItems.length > 0 && (
             <tr>
-              <td colSpan={4} className="text-right p-3 text-lg font-bold">
-                Total: ${totalCost.toFixed(2)}
+              <td colSpan={7} className="text-right p-3 text-lg font-bold">
+                Total: ${cartTotal.toFixed(2)}
               </td>
             </tr>
           )}
