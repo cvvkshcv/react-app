@@ -5,7 +5,8 @@ export type Payload = {
 };
 
 export type UseCheckout = {
-  updateCart: () => void;
+  updateCart: (handleSetStep: () => void) => void;
+  showModal: boolean;
   updateProgress: boolean;
   updateCartSuccess: boolean;
   payload: Payload;

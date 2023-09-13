@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { AddressWithoutGeo } from "../store/useUser.types";
 import Spinner from "../shared/Spinner";
 
-const Billing = () => {
+const Billing = ({ handleContinue }) => {
   const {
     fetchUserDetail,
     setUserInfo,
@@ -38,7 +38,7 @@ const Billing = () => {
   }, [loading, fetchUserDetail]);
 
   useEffect(() => {
-    if (userInfo && !loading) {
+    if (Object.keys(userInfo).length > 0 && userInfo && !loading) {
       const {
         address: { number, city, zipcode, street },
       } = userInfo;
@@ -58,6 +58,7 @@ const Billing = () => {
   // Event handlers
   const onSubmit: SubmitHandler<AddressWithoutGeo> = (data) => {
     setUserInfo(data);
+    handleContinue?.();
   };
 
   // Renderes

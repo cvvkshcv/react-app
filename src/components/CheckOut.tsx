@@ -3,7 +3,7 @@ import { useCart } from "../store/useCart";
 import { useCheckout } from "../store/useCheckout";
 import CartCount from "./CartCount";
 
-const CheckOut = () => {
+const CheckOut = ({ handleSetStep }) => {
   const { cartItemsObj, products, deleteFromCart } = useCart((store) => ({
     cartItemsObj: store.cartItems,
     products: store.products,
@@ -109,7 +109,7 @@ const CheckOut = () => {
       {cartItems.length > 0 && (
         <button
           className="bg-green-600 px-3 py-2 text-white rounded mt-4 flex justify-center items-center"
-          onClick={updateCart}
+          onClick={() => updateCart(handleSetStep)}
         >
           {updateProgress && <Spinner />}
           Checkout

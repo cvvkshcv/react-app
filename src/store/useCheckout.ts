@@ -8,7 +8,8 @@ export const useCheckout = create<UseCheckout>((set) => ({
   updateProgress: false,
   updateCartSuccess: true,
   payload: {} as Payload,
-  updateCart: async () => {
+  showModal: false,
+  updateCart: async (handleSetStep) => {
     set({
       updateProgress: true,
     });
@@ -35,7 +36,16 @@ export const useCheckout = create<UseCheckout>((set) => ({
         payload,
         updateProgress: false,
         updateCartSuccess: true,
+        showModal: true,
       });
+      setTimeout(() => {
+        set({
+          showModal: false,
+        });
+        if (handleSetStep) {
+          handleSetStep();
+        }
+      }, 3000);
     } catch (error) {
       console.log(error);
       set({

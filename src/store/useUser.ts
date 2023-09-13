@@ -12,7 +12,7 @@ export const useUser = create<UseUser>((set, get) => ({
       const res = await fetch("https://fakestoreapi.com/users/" + id);
       const data = await res.json();
       set({
-        userInfo: data,
+        userInfo: {},
         loading: false,
         error: false,
       });
