@@ -30,7 +30,9 @@ Points to note:
 
 https://github.com/cvvkshcv/react-app/assets/12455634/f4b79e79-55b4-4183-b09c-73039b4a4623
 
+### PPT
 
+[HLD & LLD.pdf](https://github.com/cvvkshcv/react-app/files/12588884/HLD.LLD.pdf)
 
 
 ### Libraries used:
